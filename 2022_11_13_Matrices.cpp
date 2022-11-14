@@ -1,5 +1,5 @@
+//Daniel Callejas Rayón
 // 2022_11_13_Matrices.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//Daniel Calleja sRayón
 //Hacer una matriz dinamica
 
 #include <iostream> //Cin y Cout
@@ -7,10 +7,10 @@
 #include <Windows.h> //Funciones del control de programa mediante pausas y dormidas
 #include <time.h>
 
- int main()
+int main()
 {
-     srand(time(NULL));
-    int** puntero = 0, Fil, Col;
+    srand(time(NULL));
+    int** puntero = 0; int Fil, Col;
     int matriz1[2][3];
     int dato;
 
@@ -34,7 +34,7 @@
     std::cin >> Fil;
     std::cout << "Dame el numero de columnas\n";
     std::cin >> Col;
-    if (Fil > 3 && Col > 3) {
+    if (Fil >= 3 && Col >= 3) {
 
         puntero = new int* [Fil];
         for (int i = 0; i < Fil; i++) {
@@ -49,14 +49,25 @@
         }
     }
     else {
-        puntero = new int* [Fil];
+        puntero = new int*[Fil];
         for (int i = 0; i < Fil; i++) {
+
+            puntero[i] = new int[Col];
+
             for (int j = 0; j < Col; j++) {
-                std::cout << "Dame el dato";
+                std::cout << "Dame el dato ";
                 std::cin >> dato;
-                 *(*(puntero + i) + j) = dato;
-                std::cout << puntero[i][j] << std::endl;
+                puntero[i][j] = dato;
             }
         }
+    }
+
+    for (int i = 0; i < Fil; i++)
+    {
+        for (int j = 0; j < Col; j++)
+        {
+            std::cout<<puntero[i][j] << " ";
+        }
+        std::cout << std::endl;
     }
 }
